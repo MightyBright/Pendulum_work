@@ -13,7 +13,7 @@ function draw() {
   background(50, 255); // translucent background (creates trails)
 
 	drawmonitor();
-  frame = frame + 1; // update time
+  frame = frame + 0.4; // update time
 	
 	if(false){
 		//tamatama KAWAII
