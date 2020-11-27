@@ -15,7 +15,7 @@ function draw() {
   background(50);
 
 	frame = frame + 0.3; // update time
-	if (3000 < frame%3600) frame = frame + 1200;
+	if (3000 < frame%3600) frame = frame + 1600;
 	
 	let maxc = 75
 	//let maxc = 65;
