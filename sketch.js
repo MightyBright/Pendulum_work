@@ -1,5 +1,5 @@
 
-let frame = 1000; // time variable 0-3600 ALL 600 - 3000 MIDOKORO 
+let frame = 710; // time variable 0-3600 ALL 600 - 3000 MIDOKORO 
 
 function setup() {
   // createCanvas(600, 600);
@@ -14,8 +14,8 @@ function draw() {
 	blendMode(BLEND);
   background(50);
 
-	frame = frame + 0.3; // update time
-	if (3000 < frame%3600) frame = frame + 1600;
+	frame = frame + 0.15; // update time
+	if (3000 < frame%3600) frame = frame + 1310;
 	
 	let maxc = 75
 	//let maxc = 65;
