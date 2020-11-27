@@ -14,7 +14,7 @@ function draw() {
 	blendMode(BLEND);
   background(50);
 
-	frame = frame + 0.1; // update time
+	frame = frame + 0.3; // update time
 	if (3000 < frame%3600) frame = frame + 1200;
 	
 	let maxc = 75
