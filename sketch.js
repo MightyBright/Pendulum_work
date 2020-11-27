@@ -1,5 +1,5 @@
 
-let frame = 0; // time variable
+let frame = 600; // time variable 0-3600 ALL 600 - 3000 MIDOKORO 
 
 function setup() {
   // createCanvas(600, 600);
@@ -10,79 +10,60 @@ function setup() {
 }
 
 function draw() {
-  background(50, 255); // translucent background (creates trails)
+	//blendMode(OVERLAY);
+	blendMode(BLEND);
+  background(50);
 
-	drawmonitor();
-  frame = frame + 0.4; // update time
+	frame = frame + 0.1; // update time
+	if (3000 < frame%3600) frame = frame + 1200;
 	
-	if(false){
-		//tamatama KAWAII
-		let pX1 = windowWidth/2 + windowWidth/3 *sin(frame);
-		ellipse(pX1, windowHeight/5, 3.0, 3.0);
-
-
-		let pX2 = windowWidth/2 + windowWidth/3 *sin(frame/60);
-		ellipse(pX2, windowHeight/5*2, 3.0, 3.0);
-
-		// 60/fps * 60sec / 360 = 10counts
-		let pX3 = windowWidth/2 + windowWidth/3 *sin(radians(frame));
-		ellipse(pX3, windowHeight/5*3, 3.0, 3.0);
-
-		// 60/fps * 60sec / 360 /10 = 1counts
-		let pX4 = windowWidth/2 + windowWidth/3 *sin(radians(frame/10));
-		ellipse(pX4, windowHeight/5*4, 3.0, 3.0);
-	}
+	let maxc = 75
+	//let maxc = 65;
+	let r = windowHeight/(maxc*2)
 	
-	// draw
-	if(false){
-		for(let c = 51; c < 65; c++){
-			let x = windowWidth/2 + windowWidth/3 *sin(radians(frame/10 * c));
-			ellipse(x, windowHeight-10, 3.0, 3.0);
-		}
-
-		for(let c = 1; c < 65; c++){
-			let x1 = windowWidth/2 + windowWidth/3 *sin(radians(frame/10 * c));
-			ellipse(x1, 10 + 6*c, 4.0, 4.0);
-		}
-	}
-	
-	if (false){
-		// draw circles
-		if(true){
-			// drawn circle in clockwise
-			for(let c = 1; c < 65; c++){
-				let x1 = windowWidth/2 + 6*c *cos(radians(frame/10 * c));
-				let y1 = windowHeight/2 + 6*c *sin(radians(frame/10 * c));
-				ellipse(x1, y1, 4.0, 4.0);
-			}
-		}
-		if(false){
-			// draw circle in anti-clockwise
-			for(let c = 1; c < 65; c++){
-				let x1 = windowWidth/2 + 6*c *cos(radians(-frame/10 * c));
-				let y1 = windowHeight/2 + 6*c *sin(radians(-frame/10 * c));
-				ellipse(x1, y1, 4.0, 4.0);
-			}
-		}
-	}	
-	
-	if(true){
+	// draw line
+	for(let c = 1; c < maxc; c++){
 		// draw line
-		for(let c = 1; c < 65; c++){
-			// draw line
-			stroke(200,80);
-			strokeWeight(2);
-			
-			let x1 = windowWidth/2 + 2*c *cos(radians(-frame/10 * c));
-			let y1 = windowHeight/2 + 2*c *sin(radians(-frame/10 * c));
-			let x2 = windowWidth/2 + 2*(c+1) *cos(radians(-frame/10 * (c+1)));
-			let y2 = windowHeight/2 + 2*(c+1) *sin(radians(-frame/10 * (c+1)));
-			
-			line(x1,y1,x2,y2);
-		}
+		stroke(100);
+		strokeWeight(4);
+		//blendMode(ADD);
+		blendMode(DODGE);
+		//blendMode(OVERLAY);
+		//blendMode(LIGHTEST);
+		//blendMode(HARD_LIGHT);
+		let x1 = windowWidth/2 + r*c *cos(radians(-frame/10 * c));
+		let y1 = windowHeight/2 + r*c *sin(radians(-frame/10 * c));
+		let x2 = windowWidth/2 + r*(c+1) *cos(radians(-frame/10 * (c+1)));
+		let y2 = windowHeight/2 + r*(c+1) *sin(radians(-frame/10 * (c+1)));
+
+		line(x1,y1,x2,y2);
+	}
+	for(let c = 1; c < maxc; c++){
+		// draw line
+		stroke(100);
+		strokeWeight(8);
+		blendMode(OVERLAY);
+		let x1 = windowWidth/2 + r*c *cos(radians(-frame/10 * c));
+		let y1 = windowHeight/2 + r*c *sin(radians(-frame/10 * c));
+		let x2 = windowWidth/2 + r*(c+1) *cos(radians(-frame/10 * (c+1)));
+		let y2 = windowHeight/2 + r*(c+1) *sin(radians(-frame/10 * (c+1)));
+
+		line(x1,y1,x2,y2);
+		line(x1,y1,x2,y2);
 	}
 	
 	
+	blendMode(BURN);
+	//fill(100);
+	fill(140);
+  rect(0,0,windowWidth,windowHeight);
+	
+	fill(10);
+	ellipse(windowWidth/2,windowHeight/2,200,200);
+	
+	blendMode(BLEND);
+	drawmonitor();
+  
 	
 }
 
