@@ -1,5 +1,5 @@
 
-let frame = 600; // time variable 0-3600 ALL 600 - 3000 MIDOKORO 
+let frame = 1000; // time variable 0-3600 ALL 600 - 3000 MIDOKORO 
 
 function setup() {
   // createCanvas(600, 600);
